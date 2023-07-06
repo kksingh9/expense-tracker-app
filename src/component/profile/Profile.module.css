@@ -1,0 +1,49 @@
+.section {
+    margin-left: 20rem;
+}
+p{
+    margin-left: 3rem;  
+}
+.contact{
+    /* margin-left: 10rem; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+.profile{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between;
+    width: 30%; */
+    max-width: 40rem;
+    width: 90%;
+}
+.url{
+    margin-left: 4rem;
+}
+.profile label{
+    padding-right: 1.5rem;
+}
+.profile input{
+    padding-right: 4rem;
+}
+
+.action{
+    margin: 0.5rem 1rem;
+
+}
+.action button{
+    background-color: #b57272;
+    border: none;
+    border-radius: 10px;
+    padding: 0.25rem 0.5rem;
+    color: white;
+}
+.cancel{
+    padding: 0.25rem 0.5rem;
+    border-radius: 7px;
+    border-color: rgb(223, 68, 68);
+    color: rgb(223, 68, 68) ;
+    background-color: white;
+}

@@ -5,9 +5,9 @@ const MainNavigation = () => {
     return (
         <header className={classes.header}>
             <ul>
-                <li>
+                {/* <li>
                     <NavLink activeClassName={classes.active} to="/home">Home</NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink activeClassName={classes.active} to="/product">Product</NavLink>
                 </li>

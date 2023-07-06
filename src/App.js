@@ -5,16 +5,33 @@ import AuthForm from './component/Login/AuthForm';
 import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import { useContext } from 'react';
+import AuthContext from './store/AuthContext';
+import Profile from './component/profile/Profile';
 //import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
+
+  const ctx = useContext(AuthContext);
+  const isLoggedIn = ctx.isLoggedIn;
   return (
     <div>
-      <Layouts>
-        <Switch>
-        <Route path="/" exact >
+      {isLoggedIn && 
+      <Switch>
+       <Route path="/" exact>
             <HomePage />
         </Route>
+        
+       
+          <Route path="/profilepage">
+            <Profile />
+          </Route>
+          </Switch>
+        }
+      {!isLoggedIn && 
+      <Layouts>
+        <Switch>
+       
         <Route path="/product">
             <ProductPage />
         </Route>
@@ -29,7 +46,7 @@ function App() {
         </Route>
         </Switch>
       </Layouts>
-   
+}
     </div>
   );
 }
