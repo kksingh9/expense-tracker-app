@@ -1,6 +1,7 @@
 import React, {Fragment, useContext, useRef} from "react";
 import AuthContext from '../../store/AuthContext';
 import classes from './Profile.module.css';
+import ProfileDetail from "./ProfileDetail";
 
 const Profile = () => {
     const enterFullNameRef = useRef();
@@ -39,11 +40,16 @@ const Profile = () => {
                     //})
                     
                 }
-            }).then((data) => {
+            })
+            .then((data) => {
                 console.log(data);
             }).catch((err) => {
                 alert(err.message);
             })
+
+    }
+    const onCancelHandler = () => {
+        ctx.logout();
     }
 
     return (
@@ -55,25 +61,26 @@ const Profile = () => {
         <section className={classes.section}>
             <div className={classes.contact}>
             <h1>Contact Detail</h1>
-            <button className={classes.cancel}>cancel</button>
+            <button className={classes.cancel} onClick={onCancelHandler}>cancel</button>
             </div>
         <form onSubmit={submitHandler}>
             <div className={classes.profile}>
             <div>
-            <label>Full Name:</label>
-            <input type="text" ref={enterFullNameRef} required />
+            <label htmlFor="nameref">Full Name:</label>
+            <input type="text" id="nameref" ref={enterFullNameRef} required />
             </div>
             <div className={classes.url}>
-            <label>Profile Photo URL :</label>
-            <input type="text" ref={enterProfilePhotoUrlRef} required />
+            <label htmlFor="htmlurl">Profile Photo URL :</label>
+            <input type="url" id="htmlurl" ref={enterProfilePhotoUrlRef} required />
             </div>
             </div>
             <div className={classes.action}>
-            <button >Update</button>
+            <button>Update</button>
             </div>
         </form>
         <hr></hr>
         </section>
+        <ProfileDetail />
         </Fragment>
     )
 };

@@ -8,6 +8,7 @@ import ProductPage from './pages/ProductPage';
 import { useContext } from 'react';
 import AuthContext from './store/AuthContext';
 import Profile from './component/profile/Profile';
+import Navigation from './component/navigation/navigation';
 //import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
@@ -16,21 +17,11 @@ function App() {
   const isLoggedIn = ctx.isLoggedIn;
   return (
     <div>
-      {isLoggedIn && 
-      <Switch>
-       <Route path="/" exact>
-            <HomePage />
-        </Route>
-        
-       
-          <Route path="/profilepage">
-            <Profile />
-          </Route>
-          </Switch>
-        }
+    {isLoggedIn  && <Navigation/> }
       {!isLoggedIn && 
       <Layouts>
         <Switch>
+         
        
         <Route path="/product">
             <ProductPage />
@@ -41,9 +32,9 @@ function App() {
         <Route path="/login">
             <AuthForm />
         </Route>
-        <Route path='*'>
+        {/* <Route path='*'>
             <Redirect to='/' />
-        </Route>
+        </Route> */}
         </Switch>
       </Layouts>
 }

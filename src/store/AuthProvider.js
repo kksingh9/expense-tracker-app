@@ -14,6 +14,7 @@ const AuthProvider = (props) => {
     }
     const logoutHandler = () => {
             setToken(null);
+            localStorage.removeItem('token');
     }
 
     const authContext = {
