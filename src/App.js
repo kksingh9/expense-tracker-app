@@ -17,11 +17,15 @@ function App() {
   const isLoggedIn = ctx.isLoggedIn;
   return (
     <div>
-    {isLoggedIn  && <Navigation/> }
-      {!isLoggedIn && 
+    
+       
       <Layouts>
         <Switch>
-         
+        {isLoggedIn  && 
+        <Route path="/navigation" >
+        <Navigation/> 
+        </Route>
+        }
        
         <Route path="/product">
             <ProductPage />
@@ -32,12 +36,12 @@ function App() {
         <Route path="/login">
             <AuthForm />
         </Route>
-        {/* <Route path='*'>
+        <Route path='*'>
             <Redirect to='/' />
-        </Route> */}
+        </Route>
         </Switch>
       </Layouts>
-}
+
     </div>
   );
 }

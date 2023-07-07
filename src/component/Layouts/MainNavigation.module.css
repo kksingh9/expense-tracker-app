@@ -29,3 +29,18 @@
     padding-bottom: 0.25rem;
     border-bottom: 4px solid #420318;
 }
+
+.logout{
+    display: flex;
+    list-style: none;
+    
+
+}
+button{
+    padding: 0.25rem 0.5rem;
+    font-size: inherit;
+    border: #420318;
+    border-radius: 10px;
+    color: #2e0210;
+    background-color:white;
+}

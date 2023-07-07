@@ -7,9 +7,6 @@ const Navigation = () => {
     return (
         <>
         <div>navigation</div>
-        
-    
-        
         <Route path="/" >
              <HomePage />
              <VerifyEmailId />
@@ -17,9 +14,6 @@ const Navigation = () => {
          <Route path="/profilepage">
               <Profile />
           </Route>
-          
-        
-        
         </>
     );
 };
