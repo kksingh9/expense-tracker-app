@@ -19,7 +19,7 @@ const Profile = () => {
                     idToken: ctx.token,
                     displayName: enteredFullName,
                     photoUrl: enteredProfilePhotoUrl,
-                    deleteAttribute: 'PHOTO_URL',
+                    deleteAttribute: '',
                     returnSecureToken: false,
 
                 }),
@@ -28,7 +28,7 @@ const Profile = () => {
                 }
             }).then((response) => {
                 if(response.ok){
-                    return response.json;
+                    return response.json();
                 }else{
                     // return response.json.then((data) => {
                          let errorMessage = 'Authentication failed';
@@ -42,7 +42,7 @@ const Profile = () => {
                 }
             })
             .then((data) => {
-                console.log(data);
+                console.log(data.providerUserInfo);
             }).catch((err) => {
                 alert(err.message);
             })

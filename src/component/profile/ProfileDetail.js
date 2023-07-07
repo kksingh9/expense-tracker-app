@@ -22,7 +22,7 @@ useEffect(() => {
   )
     .then((response) => {
       if (response.ok) {
-        return response.json;
+        return response.json();
       } else {
         // return response.json.then((data) => {
         let errorMessage = "Authentication failed";
@@ -35,12 +35,13 @@ useEffect(() => {
       }
     })
     .then((data) => {
-      console.log(data);
+      console.log(data.users);
       // const profileData = {
       //     displayName : data.displayName,
       //     photoUrl : data.
       // }
-      setUserData([...data]);
+      const user = data.users
+      setUserData([...user]);
     })
     .catch((err) => {
       alert(err.message);
