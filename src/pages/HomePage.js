@@ -10,7 +10,7 @@ const HomePage = () => {
                 <p>Welcome to expense tracker!</p>
                 <span>Your profile is incomplete
                     {/* <button> */}
-                   {" "}<Link to='profilepage'>Complete now</Link> 
+                   {" "}<Link to='/navigation/home/profilepage'>Complete now</Link> 
                     {/* </button>  */}
                     </span>
                 </div>

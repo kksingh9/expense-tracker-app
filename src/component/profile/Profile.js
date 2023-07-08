@@ -2,11 +2,13 @@ import React, {Fragment, useContext, useRef} from "react";
 import AuthContext from '../../store/AuthContext';
 import classes from './Profile.module.css';
 import ProfileDetail from "./ProfileDetail";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Profile = () => {
     const enterFullNameRef = useRef();
     const enterProfilePhotoUrlRef = useRef();
     const ctx = useContext(AuthContext);
+    const history = useHistory(); 
 
     const submitHandler = (event) => {
             event.preventDefault();
@@ -49,7 +51,7 @@ const Profile = () => {
 
     }
     const onCancelHandler = () => {
-        ctx.logout();
+        history.push('/navigation/home');
     }
 
     return (

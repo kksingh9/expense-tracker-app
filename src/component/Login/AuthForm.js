@@ -1,11 +1,14 @@
 
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, } from 'react';
+import {useHistory} from "react-router-dom";
 import classes from './AuthForm.module.css';
 import AuthContext from '../../store/AuthContext';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const AuthForm = () => {
     const [isLogin, setIsLogin] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
+    const navigate = useHistory();
 
     const ctx = useContext(AuthContext);
    
@@ -46,6 +49,8 @@ const AuthForm = () => {
         }).then(res => {
             setIsLoading(false);
             if(res.ok){
+                debugger
+                navigate.push("/navigation/home");
               return res.json()
             }else{
                 return res.json().then(data => {
@@ -83,6 +88,7 @@ const AuthForm = () => {
                 <input type='password' id='confirmpassword' ref={enterConfirmPasswordRef} required />
                 </div>}
                 <div className={classes.action}>
+                    <Link to='/login/forgetpassword'>Forget Password ?</Link><br></br>
                 {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button> }<br></br>
                 {isLoading && <p>Sending request...</p>}
                     <button

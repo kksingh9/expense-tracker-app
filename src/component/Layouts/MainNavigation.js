@@ -1,31 +1,31 @@
-import { NavLink } from "react-router-dom";
+import { NavLink,useHistory } from "react-router-dom";
 import classes from "./MainNavigation.module.css"
 import { useContext } from "react";
 import AuthContext from "../../store/AuthContext";
 
 const MainNavigation = () => {
     const ctx = useContext(AuthContext);
-
+    // const history = useHistory()
     const LogoutHandler = () => {
-
+        ctx.logout();
     }
     return (
         <header className={classes.header}>
             <ul>
                 <li>
-                    <NavLink activeClassName={classes.active} to="/navigation">Home</NavLink>
+                    <NavLink activeClassName={classes.active} to="/navigation/home">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.active} to="/product">Product</NavLink>
+                    <NavLink activeClassName={classes.active} to="/navigation/product">Product</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.active} to="/aboutus">AboutUs</NavLink>
+                    <NavLink activeClassName={classes.active} to="/navigation/aboutus" >AboutUs</NavLink>
                 </li>
             </ul>
              <div className={classes.logout}>
-                <li>
+                {/* <li>
                     <NavLink activeClassName={classes.active} to="/login">Login</NavLink>
-                </li>
+                </li> */}
                {ctx.isLoggedIn && 
                <li>
                     <button onClick={LogoutHandler}>Logout</button>

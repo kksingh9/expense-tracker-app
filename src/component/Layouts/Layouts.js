@@ -1,11 +1,15 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import MainNavigation from "./MainNavigation";
+import AuthContext from "../../store/AuthContext";
 
 
 const Layouts = (props) => {
+    const ctx = useContext(AuthContext);
+    const isLoggedIn = ctx.isLoggedIn;
     return(
         <Fragment>
-            <MainNavigation />
+             {isLoggedIn &&
+                <MainNavigation /> }
                 <main>{props.children}</main>
         
         </Fragment>

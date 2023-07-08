@@ -1,19 +1,35 @@
-import { Switch, Route, Router} from "react-router-dom/cjs/react-router-dom.min";
+import { Switch, Route, Redirect} from "react-router-dom/cjs/react-router-dom.min";
 import HomePage from "../../pages/HomePage";
 import Profile from "../profile/Profile";
 import VerifyEmailId from "../VerifyEmailId/VerifyEmailId";
+import AboutUsPage from "../../pages/AboutUsPage";
+import ProductPage from "../../pages/ProductPage";
 
 const Navigation = () => {
+    
     return (
         <>
         <div>navigation</div>
-        <Route path="/" >
+        <Switch>
+        <Route path="/navigation/home" exact >
              <HomePage />
              <VerifyEmailId />
-          </Route>
-         <Route path="/profilepage">
-              <Profile />
-          </Route>
+        </Route>
+        <Route path="/navigation/home/profilepage" >
+            <Profile />
+        </Route>
+        <Route path="/navigation/product" >
+            <ProductPage />
+        </Route>
+        
+        <Route path="/navigation/aboutus">
+            <AboutUsPage />
+        </Route>
+        <Route path="/">
+            <Redirect to="/navigation/home" />
+        </Route>
+        </Switch>
+         
         </>
     );
 };
