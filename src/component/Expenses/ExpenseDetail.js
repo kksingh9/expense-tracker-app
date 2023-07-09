@@ -23,6 +23,7 @@ const ExpenseDetail = () => {
             category: data[key].category,
           });
         }
+        
         setExpenses(newArray);
         //controller = null;
       } catch (err) {
@@ -37,6 +38,7 @@ const ExpenseDetail = () => {
       {expenses.map((expense) => (
         <ExpenseOnScreen
           key={expense.id}
+          id={expense.id}
           moneySpent={expense.moneySpent}
           description={expense.description}
           category={expense.category}

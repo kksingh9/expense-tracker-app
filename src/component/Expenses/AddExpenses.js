@@ -1,13 +1,13 @@
-import { useState } from "react";
-//import AuthContext from "../../store/AuthContext";
+import { useState, useContext } from "react";
+import AuthContext from "../../store/AuthContext";
 import classes from "./AddExpense.module.css";
 
 const AddExpenses = () => {
-  const [moneySpent, setMoneySpent] = useState();
-  const [description, setDescription] = useState();
-  const [category, setCategory] = useState();
-  // const ctx = useContext(AuthContext);
-
+  const [moneySpent, setMoneySpent] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const ctx = useContext(AuthContext);
+  const update = ctx.expenses
   const moneySpentHandler = (e) => {
    
     setMoneySpent(e.target.value);
@@ -27,7 +27,7 @@ const AddExpenses = () => {
     //   category: category,
     // };
     // ctx.addExpenses(expenseElement);
-    
+    if(!update){
     fetch("https://react-http-4e109-default-rtdb.firebaseio.com/expenses.json",
       {
         method: "POST",
@@ -55,6 +55,35 @@ const AddExpenses = () => {
       .catch((err) => {
         alert(err.message);
       });
+    }else{
+      fetch(`https://react-http-4e109-default-rtdb.firebaseio.com/expenses/${update}.json`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          moneySpent: moneySpent,
+          description: description,
+          category: category,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          let errorMessage = "Authentication failed";
+           throw new Error(errorMessage);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    }
 
     setMoneySpent("");
     setDescription("");

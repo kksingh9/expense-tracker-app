@@ -5,8 +5,8 @@ const AuthContext = createContext({
     isLoggedIn : false,
     login: (token) => {},
     logout: () => {},
-    // expenses: [],
-    // addExpenses: (expense) => {},
+    expenses: [],
+    addExpenses: (expense) => {},
 });
 
 export default AuthContext ;
