@@ -16,7 +16,7 @@ const MainNavigation = () => {
                     <NavLink activeClassName={classes.active} to="/navigation/home">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={classes.active} to="/navigation/product">Product</NavLink>
+                    <NavLink activeClassName={classes.active} to="/navigation/product">Expense</NavLink>
                 </li>
                 <li>
                     <NavLink activeClassName={classes.active} to="/navigation/aboutus" >AboutUs</NavLink>

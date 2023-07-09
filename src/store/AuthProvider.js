@@ -6,6 +6,7 @@ const AuthProvider = (props) => {
 
     const idToken = localStorage.getItem('token');
     const [token, setToken] = useState(idToken);
+    // const [expenseState, setExpenseState] = useState([])
 
     const userLoggedIn = !!token ;
     const loginHandler = (token) => {
@@ -16,12 +17,18 @@ const AuthProvider = (props) => {
             setToken(null);
             localStorage.removeItem('token');
     }
+    // const addExpensesHandler = (expense) => {
+    //     const expenseArray = [...expenseState, expense];
+    //         setExpenseState(expenseArray);
+    // }
 
     const authContext = {
         token: token,
         isLoggedIn: userLoggedIn,
         login:  loginHandler,
         logout: logoutHandler,
+        // expenses: expenseState,
+        // addExpenses: addExpensesHandler,
     }
     return (
         <AuthContext.Provider value={authContext}>

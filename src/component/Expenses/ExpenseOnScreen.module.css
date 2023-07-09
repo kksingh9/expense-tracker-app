@@ -1,0 +1,24 @@
+.form-control{
+    margin-top: 1rem;
+}
+.control{
+    margin:  auto;
+    padding: 1rem 1rem;
+    width: 90%;
+    max-width: 40rem;
+    background-color: rgb(231, 218, 218);
+    list-style: none;
+    border-radius: 12px;
+
+}
+.control li{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.detail span{
+   padding: 1rem;
+   font-size: inherit;
+   
+}

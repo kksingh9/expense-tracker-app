@@ -1,10 +1,13 @@
 import { Fragment } from "react"
+import ExpenseDetail from "../component/Expenses/ExpenseDetail";
+import AddExpenses from "../component/Expenses/AddExpenses";
 
 
 const ProductPage = () => {
     return (
         <Fragment>
-            <h1>ProductPage</h1>
+            <AddExpenses />
+            <ExpenseDetail/>
         </Fragment>
     )
 };

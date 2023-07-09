@@ -9,7 +9,6 @@ const Navigation = () => {
     
     return (
         <>
-        <div>navigation</div>
         <Switch>
         <Route path="/navigation/home" exact >
              <HomePage />
