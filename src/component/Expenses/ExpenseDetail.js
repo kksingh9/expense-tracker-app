@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ExpenseOnScreen from "./ExpenseOnScreen";
-//import AuthContext from "../../store/AuthContext";
-
+import { useDispatch, useSelector } from "react-redux";
+import { expenseActions } from "../../store/expenses";
 const ExpenseDetail = () => {
-  const [expenses, setExpenses] = useState([]);
+  //const [expenses, setExpenses] = useState([]);
+  const dispatch = useDispatch();
+  const expenses = useSelector(state => state.expense.expenses)
 
   useEffect(() => {
     //let controller = new AbortController();
@@ -24,14 +26,14 @@ const ExpenseDetail = () => {
           });
         }
         
-        setExpenses(newArray);
+        dispatch(expenseActions.addExpenses(newArray));
         //controller = null;
       } catch (err) {
         alert(err.message);
       }
     })();
     //return () => controller?.abort();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

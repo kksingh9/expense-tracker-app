@@ -1,10 +1,9 @@
 //import AddExpenses from "./AddExpenses";
 import classes from "./ExpenseOnScreen.module.css";
-import AuthContext from "../../store/AuthContext";
-import { useContext } from "react";
+
 
 const ExpenseOnScreen = (props) => {
-  const ctx = useContext(AuthContext);
+  
 
   const deleteHandler = async (id) => {
     try {
@@ -33,7 +32,7 @@ const ExpenseOnScreen = (props) => {
       //   description: props.description,
       //   moneySpent: props.moneySpent,
       // }
-      ctx.addExpenses(id)
+      //ctx.addExpenses(id)
   }
   
   return (

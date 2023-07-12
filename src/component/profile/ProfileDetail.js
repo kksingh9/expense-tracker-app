@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileOnScreen from "./ProfileOnScreen";
-import AuthContext from "../../store/AuthContext";
+import { useSelector } from "react-redux";
 
 const ProfileDetail = () => {
-  const ctx = useContext(AuthContext);
+  const token = useSelector(state => state.auth.token);
   const [userData, setUserData] = useState([]);
-  const tokenId = ctx.token;
+
 
 useEffect(() => {
   fetch(
@@ -13,7 +13,7 @@ useEffect(() => {
     {
       method: "POST",
       body: JSON.stringify({
-        idToken: tokenId,
+        idToken: token,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ useEffect(() => {
       alert(err.message);
     });
 
-}, [tokenId]);
+}, [token]);
 
   return (
     <>

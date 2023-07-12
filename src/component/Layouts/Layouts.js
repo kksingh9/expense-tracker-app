@@ -1,11 +1,10 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import MainNavigation from "./MainNavigation";
-import AuthContext from "../../store/AuthContext";
+import { useSelector } from "react-redux";
 
 
 const Layouts = (props) => {
-    const ctx = useContext(AuthContext);
-    const isLoggedIn = ctx.isLoggedIn;
+    const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
     return(
         <Fragment>
              {isLoggedIn &&

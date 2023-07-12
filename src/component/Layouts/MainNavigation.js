@@ -1,13 +1,13 @@
-import { NavLink,useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css"
-import { useContext } from "react";
-import AuthContext from "../../store/AuthContext";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/auth";
 
 const MainNavigation = () => {
-    const ctx = useContext(AuthContext);
-    // const history = useHistory()
+    const isLoggedIn = useSelector(state => state.auth.isAuthenticated);
+    const dispatch = useDispatch();
     const LogoutHandler = () => {
-        ctx.logout();
+        dispatch(authActions.logout());
     }
     return (
         <header className={classes.header}>
@@ -26,7 +26,7 @@ const MainNavigation = () => {
                 {/* <li>
                     <NavLink activeClassName={classes.active} to="/login">Login</NavLink>
                 </li> */}
-               {ctx.isLoggedIn && 
+               {isLoggedIn && 
                <li>
                     <button onClick={LogoutHandler}>Logout</button>
                 </li>}

@@ -1,16 +1,17 @@
 
-import React, { useState, useRef, useContext, } from 'react';
+import React, { useState, useRef } from 'react';
 import {useHistory} from "react-router-dom";
 import classes from './AuthForm.module.css';
-import AuthContext from '../../store/AuthContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/auth';
 
 const AuthForm = () => {
     const [isLogin, setIsLogin] = useState(true)
+    //const isLoggedIn = useSelector(state => state.auth.isAuthenticated)
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useHistory();
-
-    const ctx = useContext(AuthContext);
+    const dispatch = useDispatch();
    
     const enterEmailInputRef = useRef();
     const enterPasswordInputRef = useRef();
@@ -25,7 +26,7 @@ const AuthForm = () => {
         const enteredEmail = enterEmailInputRef.current.value;
         const enteredPassword = enterPasswordInputRef.current.value;
         //const enteredConfirmPassword = enterConfirmPasswordRef.current.value;
-        
+        //dispatch(authActions.login());
         setIsLoading(true)
         let url;
         if(isLogin){
@@ -49,7 +50,7 @@ const AuthForm = () => {
         }).then(res => {
             setIsLoading(false);
             if(res.ok){
-                debugger
+            
                 navigate.push("/navigation/home");
               return res.json()
             }else{
@@ -64,7 +65,8 @@ const AuthForm = () => {
             }
         }).then((data) => {
             //console.log(data);
-            ctx.login(data.idToken);
+            
+            dispatch(authActions.login(data.idToken));
 
         }).catch((err) => {
             alert(err.message) ;

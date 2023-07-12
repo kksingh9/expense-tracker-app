@@ -2,14 +2,13 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import Layouts from "./component/Layouts/Layouts";
 import AuthForm from "./component/Login/AuthForm";
-import { useContext } from "react";
-import AuthContext from "./store/AuthContext";
 import Navigation from "./component/LoginRouters/navigation";
 import ForgetPassword from "./component/ForgetPassword/ForgetPassword";
+import { useSelector } from "react-redux";
 
 function App() {
-  const ctx = useContext(AuthContext);
-  const isLoggedIn = ctx.isLoggedIn;
+  const isLoggedIn = useSelector(state => state.auth.isAuthenticated);
+  
   return (
     <div>
       <Layouts>

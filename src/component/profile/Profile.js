@@ -1,5 +1,5 @@
-import React, { Fragment, useContext, useRef } from "react";
-import AuthContext from "../../store/AuthContext";
+import React, { Fragment, useRef } from "react";
+import { useSelector } from "react-redux";
 import classes from "./Profile.module.css";
 import ProfileDetail from "./ProfileDetail";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Profile = () => {
   const enterFullNameRef = useRef();
   const enterProfilePhotoUrlRef = useRef();
-  const ctx = useContext(AuthContext);
+  const token = useSelector(state => state.auth.token);
   const history = useHistory();
-
+  
   const submitHandler = (event) => {
     event.preventDefault();
     const enteredFullName = enterFullNameRef.current.value;
@@ -20,7 +20,7 @@ const Profile = () => {
       {
         method: "POST",
         body: JSON.stringify({
-          idToken: ctx.token,
+          idToken: token,
           displayName: enteredFullName,
           photoUrl: enteredProfilePhotoUrl,
           // deleteAttribute: '',
