@@ -2,13 +2,18 @@ import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css"
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../store/auth";
-
+import { modeActions } from "../../store/darkModeSlice";
 const MainNavigation = () => {
     const isLoggedIn = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
     const LogoutHandler = () => {
         dispatch(authActions.logout());
     }
+    
+    
+    const toggleHandler = () => {
+      dispatch(modeActions.toggleDarkMode());
+    };
     return (
         <header className={classes.header}>
             <ul>
@@ -30,6 +35,7 @@ const MainNavigation = () => {
                <li>
                     <button onClick={LogoutHandler}>Logout</button>
                 </li>}
+                <button onClick={toggleHandler}>Dark Mode</button>
              </div>
             
             

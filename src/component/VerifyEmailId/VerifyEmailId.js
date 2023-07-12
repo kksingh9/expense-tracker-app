@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const VerifyEmailId = () => {
-
+    const history = useHistory();
     const token = useSelector(state => state.auth.token)
 
     const VerifyEmailIdHandler = () => {
@@ -33,6 +34,8 @@ const VerifyEmailId = () => {
     .then((data) => {
         console.log(data.email);
         alert('verified email successfully!');
+        history.push("/navigation/home")
+        
     }).catch((err) => {
         alert(err.message);
     })
@@ -41,6 +44,7 @@ const VerifyEmailId = () => {
     return (
         <>
         <button onClick={VerifyEmailIdHandler}>VerifyEmailId</button>
+        
         </>
     );
 };

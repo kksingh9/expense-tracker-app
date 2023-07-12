@@ -1,9 +1,10 @@
 //import AddExpenses from "./AddExpenses";
 import classes from "./ExpenseOnScreen.module.css";
-
+import { expenseActions } from "../../store/expenses";
+import { useDispatch } from "react-redux";
 
 const ExpenseOnScreen = (props) => {
-  
+  const dispatch = useDispatch();
 
   const deleteHandler = async (id) => {
     try {
@@ -24,17 +25,11 @@ const ExpenseOnScreen = (props) => {
     } catch (err) {
       alert(err.message);
     }
-  }
-  const editHandler = (id) =>{
-      // const update = {
-      //   id: props.id,
-      //   category: props.category,
-      //   description: props.description,
-      //   moneySpent: props.moneySpent,
-      // }
-      //ctx.addExpenses(id)
-  }
-  
+  };
+  const editHandler = (id) => {
+    dispatch(expenseActions.updateExpenses(id));
+  };
+
   return (
     <>
       <div className={classes["form-control"]}>
@@ -53,7 +48,13 @@ const ExpenseOnScreen = (props) => {
           >
             Delete
           </button>
-          <button onClick={ () => {editHandler(props.id)}}>Edit</button>
+          <button
+            onClick={() => {
+              editHandler(props.id);
+            }}
+          >
+            Edit
+          </button>
         </ul>
       </div>
     </>

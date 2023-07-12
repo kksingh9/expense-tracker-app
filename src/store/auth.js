@@ -7,16 +7,7 @@ const initialAuthState = {
     isAuthenticated : false,
     token : tokenId,
 }
-// const AuthContext = createContext({
-//     token : "",
-//     isLoggedIn : false,
-//     login: (token) => {},
-//     logout: () => {},
-//     expenses: [],
-//     addExpenses: (expense) => {},
-// });
 
-// export default AuthContext ;
 const authSlice = createSlice({
     name : 'authentication',
     initialState : initialAuthState,
