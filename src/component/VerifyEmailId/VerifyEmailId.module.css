@@ -1,0 +1,12 @@
+.action {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;/*vh = view port height*/
+  align-items: center;
+}
+.action button {
+  background-color: rgb(121, 121, 173);
+  color: white;
+  padding: 0.5rem 1rem;
+}

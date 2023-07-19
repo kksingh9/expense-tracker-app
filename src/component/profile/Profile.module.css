@@ -3,6 +3,7 @@
 }
 p{
     margin-left: 3rem;  
+    color: rgb(95, 91, 91);
 }
 .contact{
     /* margin-left: 10rem; */
@@ -10,6 +11,7 @@ p{
     align-items: center;
     justify-content: space-between;
     width: 95%;
+    color: rgb(102, 96, 96);
 }
 .profile{
     display: flex;
@@ -24,6 +26,7 @@ p{
 }
 .profile label{
     padding-right: 1.5rem;
+    color: rgb(104, 102, 102);
 }
 .profile input{
     padding-right: 4rem;

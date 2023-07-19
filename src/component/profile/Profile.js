@@ -15,15 +15,14 @@ const Profile = () => {
     const enteredFullName = enterFullNameRef.current.value;
     const enteredProfilePhotoUrl = enterProfilePhotoUrlRef.current.value;
 
-    fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBnQEvtto0FeB4KjaMBCBo2hoaTGrFe5m4",
+    fetch("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDYe7rxDYbi7WgXlIL3QX92DmYYVyXFWho",
       {
         method: "POST",
         body: JSON.stringify({
           idToken: token,
           displayName: enteredFullName,
           photoUrl: enteredProfilePhotoUrl,
-          // deleteAttribute: '',
+          deleteAttribute: 'PHOTO_URL',
           returnSecureToken: false,
         }),
         headers: {

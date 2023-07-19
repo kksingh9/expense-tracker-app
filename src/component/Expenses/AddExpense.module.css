@@ -1,67 +1,64 @@
-.expense{
-    margin-top: 1rem;
+.expense {
+  margin-top: 6rem;
 }
-.form{
-    
-    margin:  auto;
-    padding: 1rem 1rem;
-    width: 90%;
-    max-width: 40rem;
-    background-color: rgb(231, 218, 218);
-    border-radius: 20px;
-
-} 
-.form-control{
-   
-   display: flex;
-   /* justify-content: space-between;
+.form {
+  margin: auto;
+  padding: 1rem 1rem;
+  width: 90%;
+  max-width: 40rem;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25);
+}
+.form-control {
+  display: flex;
+  /* justify-content: space-between;
    width: 5%; */
 }
-.control{
-    margin: 1.5rem 2rem;
+.control {
+  margin: 1.5rem 2rem;
 }
-.control label{
-    font-size: inherit;
-    padding: 0.5rem;
-    font-weight:  bold;
-    color: rgb(128, 118, 118);
+.control label {
+  font-size: inherit;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: rgb(128, 118, 118);
 }
-.control input{
-    width: 10rem;
-    font-size: inherit;
-    border-radius: 5px;
-    border-color: rgb(218, 221, 223);
-   
+.control input {
+  width: 10rem;
+  font-size: inherit;
+  border-radius: 5px;
+  border-color: rgb(218, 221, 223);
 }
-.control select{
-    cursor: pointer;
-    width: 10rem;
-    font-size: inherit;
-    margin-left: 1rem;
-    border-radius: 5px;
-    border-color: rgb(218, 221, 223);
+.control select {
+  cursor: pointer;
+  width: 10rem;
+  font-size: inherit;
+  margin-left: 1rem;
+  border-radius: 5px;
+  border-color: rgb(218, 221, 223);
 }
-.control-spent{
-    margin-top: 1.5rem;
-    margin-left: 1rem;
+.control-spent {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
 }
-.control-spent label{
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: inherit;
-    color: rgb(151, 140, 140);
+.control-spent label {
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: inherit;
+  color: rgb(151, 140, 140);
 }
-.control-spent input{
-    width: 10rem;
-    font-size: inherit;
-    border-radius: 5px;
-    border-color: rgb(218, 221, 223);
+.control-spent input {
+  width: 10rem;
+  font-size: inherit;
+  border-radius: 5px;
+  border-color: rgb(218, 221, 223);
 }
-.action{
-    margin: 1.5rem;
+.action {
+  margin: 1.5rem;
 }
-.action button{
-    cursor: pointer;
-    margin-left: 3rem;
-    color: rgb(49, 49, 80);
+.action button {
+  cursor: pointer;
+  margin-left: 3rem;
+  color: rgb(49, 49, 80);
 }

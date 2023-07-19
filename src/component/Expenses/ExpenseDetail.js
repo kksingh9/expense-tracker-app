@@ -1,18 +1,17 @@
 import { useEffect } from "react";
 import ExpenseOnScreen from "./ExpenseOnScreen";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { expenseActions } from "../../store/expenses";
 const ExpenseDetail = () => {
   //const [expenses, setExpenses] = useState([]);
   const dispatch = useDispatch();
-  const expenses = useSelector((state) => state.expense.expenses);
-
+  const expenses = useSelector((state) => state.expense.getExpense);
   useEffect(() => {
     let setinterval = setInterval(() => {
       (async () => {
         try {
           const response = await fetch(
-            "https://react-http-4e109-default-rtdb.firebaseio.com/expenses.json"
+            "https://expenses-e01a2-default-rtdb.firebaseio.com/expenses.json"
           );
 
           const data = await response.json();
@@ -27,7 +26,7 @@ const ExpenseDetail = () => {
             });
           }
 
-          dispatch(expenseActions.addExpenses(newArray));
+          dispatch(expenseActions.getExpense(newArray));
           //controller = null;
         } catch (err) {
           alert(err.message);

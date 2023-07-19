@@ -1,15 +1,15 @@
-.profile{
-    position: relative;
-    z-index: 3;
-    margin: 0;
-    list-style: none;
+.profile {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  list-style: none;
 }
-.profile img{
-    margin-top: -10rem;
-    margin-left: 2rem;
-
+.profile img {
+  margin-top: -10rem;
+  margin-left: 2rem;
 }
-.profile span{
-    margin-left: 4rem;
-    font-size: inherit;
+.profile span {
+  margin-left: 4rem;
+  font-size: inherit;
+  color: rgb(94, 92, 92);
 }

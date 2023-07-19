@@ -23,9 +23,9 @@ const MainNavigation = () => {
                 <li>
                     <NavLink activeClassName={classes.active} to="/navigation/product">Expense</NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink activeClassName={classes.active} to="/navigation/aboutus" >AboutUs</NavLink>
-                </li>
+                </li> */}
             </ul>
              <div className={classes.logout}>
                 {/* <li>

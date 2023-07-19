@@ -1,7 +1,7 @@
 //import AddExpenses from "./AddExpenses";
 import classes from "./ExpenseOnScreen.module.css";
 import { expenseActions } from "../../store/expenses";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ExpenseOnScreen = (props) => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const ExpenseOnScreen = (props) => {
   const deleteHandler = async (id) => {
     try {
       const response = await fetch(
-        `https://react-http-4e109-default-rtdb.firebaseio.com/expenses/${id}.json`,
+        `https://expenses-e01a2-default-rtdb.firebaseio.com/expenses/${id}.json`,
         {
           method: "DELETE",
           headers: {
@@ -39,22 +39,27 @@ const ExpenseOnScreen = (props) => {
               <span>{props.category}</span>
               <span>{props.description}</span>
             </div>
-            <span>{props.moneySpent}</span>
+            <div>
+              <span>{props.moneySpent}</span>
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  deleteHandler(props.id);
+                }}
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => {
+                  editHandler(props.id);
+                }}
+              >
+                Edit
+              </button>
+            </div>
+            {/* {totalExpense} */}
           </li>
-          <button
-            onClick={() => {
-              deleteHandler(props.id);
-            }}
-          >
-            Delete
-          </button>
-          <button
-            onClick={() => {
-              editHandler(props.id);
-            }}
-          >
-            Edit
-          </button>
         </ul>
       </div>
     </>

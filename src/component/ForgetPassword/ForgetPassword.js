@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import classes from "./ForgetPassword.module.css";
 
 const ForgetPassword = () => {
   const enterEmailInputRef = useRef();
@@ -10,7 +11,7 @@ const ForgetPassword = () => {
     const enteredEmail = enterEmailInputRef.current.value;
 
     fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBnQEvtto0FeB4KjaMBCBo2hoaTGrFe5m4",
+      "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDYe7rxDYbi7WgXlIL3QX92DmYYVyXFWho",
       {
         method: "POST",
         body: JSON.stringify({
@@ -47,13 +48,14 @@ const ForgetPassword = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className={classes.password}>
+        <h3>Expense Tracker</h3>
         <input
           type="email"
           id="emailId"
           ref={enterEmailInputRef}
           placeholder="email"
-        />
+        /><br></br>
         <button>Send Link</button>
       </form>
     </>

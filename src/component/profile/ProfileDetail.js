@@ -8,8 +8,7 @@ const ProfileDetail = () => {
 
 
 useEffect(() => {
-  fetch(
-    "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBnQEvtto0FeB4KjaMBCBo2hoaTGrFe5m4",
+  fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDYe7rxDYbi7WgXlIL3QX92DmYYVyXFWho",
     {
       method: "POST",
       body: JSON.stringify({

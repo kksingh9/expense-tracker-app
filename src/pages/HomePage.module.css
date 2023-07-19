@@ -3,10 +3,11 @@
     align-items: center;
     justify-content: space-between;
     width: 95%;
-
+    margin-top: 6rem;
 }
 .header p{
     padding-left: 2rem;
+    color: rgb(128, 99, 99);
 }
 .header span {
     background-color: #e8dbdb;

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import classes from './HomePage.module.css';
 import { Link } from 'react-router-dom';
+import Csvfile from "../component/csvfile/csvfile";
 
 const HomePage = () => {
     return (
@@ -15,6 +16,7 @@ const HomePage = () => {
                     </span>
                 </div>
                 <hr></hr>
+                <Csvfile />
             </header>
         </Fragment>
     );

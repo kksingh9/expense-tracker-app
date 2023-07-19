@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./AddExpense.module.css";
+import { expenseActions } from "../../store/expenses";
 
 const AddExpenses = () => {
   const [moneySpent, setMoneySpent] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const update = useSelector((state) => state.expense.update);
-
+  const dispatch = useDispatch();
+  const update = useSelector(state => state.expense.update)
+ 
   const moneySpentHandler = (e) => {
     setMoneySpent(e.target.value);
   };
@@ -20,39 +22,9 @@ const AddExpenses = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    if (!update) {
+    if(update){
       fetch(
-        "https://react-http-4e109-default-rtdb.firebaseio.com/expenses.json",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            moneySpent: moneySpent,
-            description: description,
-            category: category,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            let errorMessage = "Authentication failed";
-            throw new Error(errorMessage);
-          }
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    } else {
-      fetch(
-        `https://react-http-4e109-default-rtdb.firebaseio.com/expenses/${update}.json`,
+        `https://expenses-e01a2-default-rtdb.firebaseio.com/expenses/${update}.json`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -79,8 +51,16 @@ const AddExpenses = () => {
         .catch((err) => {
           alert(err.message);
         });
-    }
-
+    }else{
+   
+    dispatch(expenseActions.addExpenses({
+      moneySpent: moneySpent,
+      description: description,
+      category: category,
+     
+    }))
+  }
+  dispatch(expenseActions.updateExpenses(""));
     setMoneySpent("");
     setDescription("");
     setCategory("");
