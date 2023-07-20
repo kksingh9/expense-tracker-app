@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { modeActions } from "../../store/darkModeSlice";
 import classes from "./ActivePremium.module.css";
 

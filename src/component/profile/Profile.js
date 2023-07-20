@@ -48,7 +48,7 @@ const Profile = () => {
         console.log(data.providerUserInfo);
       })
       .catch((err) => {
-        alert(err.message);
+       // alert(err.message);
       });
   };
   const onCancelHandler = () => {

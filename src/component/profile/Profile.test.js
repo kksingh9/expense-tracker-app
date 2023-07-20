@@ -1,12 +1,35 @@
 import Profile from "./Profile";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import store from "../../store/index";
 
-describe("render 'MainNavigation Component'",() => {
-    test("render 'Home Link'",() => {
-        render(<Profile />);
+const rend = component => render(
+    <Provider store={store}>
+        {component}
+    </Provider>
+)
 
-        const Button = screen.getByRole("button");
-        userEvent.click(Button);
+describe("render 'Profile Component'",() => {
+    test("render 'Contact Detail'", () => {
+        rend(<Profile />);
+
+        const text =  screen.getByText('Contact Detail');
+        expect(text).toBeInTheDocument();
+        
     })
+   
+    test("render 'async'", async() => {
+        
+        
+            window.fetch = jest.fn();
+            window.fetch.mockResolvedValueOnce({
+                json:  {idToken : 'hh', },
+            });
+            rend(<Profile />);
+    
+           const list = await screen.findAllByRole('');
+           expect(list).not.toHaveLength(0);
+        });
+    
 })

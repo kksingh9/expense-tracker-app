@@ -32,7 +32,7 @@ const ExpenseDetail = () => {
           alert(err.message);
         }
       })();
-    }, 5000);
+    }, 1000);
     return () => clearInterval(setinterval);
   }, [dispatch]);
 
