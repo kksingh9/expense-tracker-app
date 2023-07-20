@@ -16,4 +16,10 @@ describe("ActivatePremium Component",() => {
         const text = screen.getByText('ActivatePremium');
         expect(text).toBeInTheDocument();
     });
+    test("render 'button role'",() => {
+        rend(<ActivatePremium />);
+
+        const ButtonText = screen.getByRole("button");
+        expect(ButtonText).toBeInTheDocument();
+    })
 });

@@ -18,4 +18,10 @@ describe("render 'VerifyEmailId Component'",() => {
         const ButtonText = screen.getByText("VerifyEmailId");
         expect(ButtonText).toBeInTheDocument();
     })
+    test("render 'button role'",() => {
+        rend(<VerifyEmailId />);
+
+        const ButtonText = screen.getByRole("button");
+        expect(ButtonText).toBeInTheDocument();
+    })
 })
