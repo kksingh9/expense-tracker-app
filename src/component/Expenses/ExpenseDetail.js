@@ -11,7 +11,7 @@ const ExpenseDetail = () => {
       (async () => {
         try {
           const response = await fetch(
-            "https://expenses-e01a2-default-rtdb.firebaseio.com/expenses.json"
+            "https://expenses-27efa-default-rtdb.firebaseio.com/expenses.json"
           );
 
           const data = await response.json();

@@ -9,7 +9,7 @@ const ExpenseOnScreen = (props) => {
   const deleteHandler = async (id) => {
     try {
       const response = await fetch(
-        `https://expenses-e01a2-default-rtdb.firebaseio.com/expenses/${id}.json`,
+        `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${id}.json`,
         {
           method: "DELETE",
           headers: {

@@ -12,11 +12,17 @@ let initial = true;
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   const expense = useSelector((state) => state.expense.expenses);
+
+  const darkMode = useSelector(state => state.mode.mode);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", darkMode);
+  }, [darkMode]);
   //const mode = useSelector((state) => state.mode.mode);
   useEffect(() => {
     const sendData = () => {
       fetch(
-        "https://expenses-e01a2-default-rtdb.firebaseio.com/expenses.json",
+        "https://expenses-27efa-default-rtdb.firebaseio.com/expenses.json",
         {
           method: "POST",
           body: JSON.stringify(expense),

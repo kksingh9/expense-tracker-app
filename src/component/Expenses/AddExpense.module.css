@@ -1,5 +1,6 @@
 .expense {
-  margin-top: 6rem;
+  margin-top: 5rem;
+  padding-top: 1rem ;
 }
 .form {
   margin: auto;
@@ -21,20 +22,23 @@
 .control label {
   font-size: inherit;
   padding: 0.5rem;
+  
   font-weight: bold;
   color: rgb(128, 118, 118);
 }
 .control input {
+  margin-top: 5px;
   width: 10rem;
   font-size: inherit;
   border-radius: 5px;
   border-color: rgb(218, 221, 223);
 }
 .control select {
+  margin-top: 5px;
   cursor: pointer;
   width: 10rem;
   font-size: inherit;
-  margin-left: 1rem;
+  
   border-radius: 5px;
   border-color: rgb(218, 221, 223);
 }
@@ -56,6 +60,7 @@
 }
 .action {
   margin: 1.5rem;
+  margin-top: 1rem;
 }
 .action button {
   cursor: pointer;

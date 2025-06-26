@@ -17,7 +17,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div style={{ background: mode ? "black" : "#ffffff", height: "100vh" }}>
+      <div>
         <Switch>
           <Route path="/navigation/verify" exact>
             <VerifyEmailId />

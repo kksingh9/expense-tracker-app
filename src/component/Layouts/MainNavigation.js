@@ -15,7 +15,7 @@ const MainNavigation = () => {
       dispatch(modeActions.toggleDarkMode());
     };
     return (
-        <header className={classes.header}>
+        <header className={`${classes.header} `}>
             <ul>
                 <li>
                     <NavLink activeClassName={classes.active} to="/navigation/home">Home</NavLink>

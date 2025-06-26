@@ -24,7 +24,7 @@ const AddExpenses = () => {
     event.preventDefault();
     if(update){
       fetch(
-        `https://expenses-e01a2-default-rtdb.firebaseio.com/expenses/${update}.json`,
+        `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${update}.json`,
         {
           method: "PUT",
           body: JSON.stringify({
