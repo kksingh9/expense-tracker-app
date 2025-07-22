@@ -5,7 +5,6 @@
 .control {
   margin: auto;
   padding: 1rem;
-  width: 90%;
   max-width: 40rem;
   background-color: var(--control-bg);
   color: var(--text-color);
@@ -32,4 +31,17 @@
 
 button {
   margin-left: var(--button-margin);
+}
+
+@media (max-width: 500px){
+  .control {
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
+    background-color: var(--control-bg);
+    color: var(--text-color);
+    list-style: none;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+  }
 }

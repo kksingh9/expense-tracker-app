@@ -7,6 +7,7 @@ import Navigation from "./component/LoginRouters/navigation";
 import ForgetPassword from "./component/ForgetPassword/ForgetPassword";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 let initial = true;
 function App() {
@@ -43,7 +44,7 @@ function App() {
           console.log(data);
         })
         .catch((err) => {
-          alert(err.message);
+          toast.error(err.message);
         });
     };
     if (initial) {
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer />
       <Layouts>
         <Switch>
           {isLoggedIn && <Navigation />}

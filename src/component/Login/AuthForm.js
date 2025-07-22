@@ -4,6 +4,7 @@ import classes from "./AuthForm.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/auth";
+import Loader from "../Loader/loader";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -103,6 +104,7 @@ const AuthForm = () => {
           })
           .catch((err) => {
             alert(err.message);
+            setIsLoading(false)
           });
         
     }
@@ -146,7 +148,7 @@ const AuthForm = () => {
           <br></br>
           {isLoading && <p>Sending request...</p>}
           <button type="button" onClick={SwitchHandler}>
-            {isLogin ? "Create new account" : "Login with existing account"}
+            {isLogin ? isLoading? <Loader/>:"Create new account" : isLoading? <Loader/>:"Login with existing account"}
           </button>
         </div>
       </form>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import ExpenseOnScreen from "./ExpenseOnScreen";
 import { useSelector, useDispatch } from "react-redux";
 import { expenseActions } from "../../store/expenses";
+import { toast } from "react-toastify";
 const ExpenseDetail = () => {
   //const [expenses, setExpenses] = useState([]);
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ExpenseDetail = () => {
           dispatch(expenseActions.getExpense(newArray));
           //controller = null;
         } catch (err) {
-          alert(err.message);
+          toast(err.message);
         }
       })();
     }, 1000);

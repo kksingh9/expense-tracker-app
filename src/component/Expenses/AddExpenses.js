@@ -1,22 +1,25 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./AddExpense.module.css";
 import { expenseActions } from "../../store/expenses";
+import { toast } from "react-toastify";
+import Loader from "../Loader/loader";
 
 const AddExpenses = () => {
   const [moneySpent, setMoneySpent] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const update = useSelector(state => state.expense.update)
- 
+  const update = useSelector((state) => state.expense.update);
+
   useEffect(() => {
-    if(update && update.id){
-      setMoneySpent(update.moneySpent)
-      setDescription(update.description)
-      setCategory(update.category)
+    if (update && update.id) {
+      setMoneySpent(update.moneySpent);
+      setDescription(update.description);
+      setCategory(update.category);
     }
-  },[update])
+  }, [update]);
   const moneySpentHandler = (e) => {
     setMoneySpent(e.target.value);
   };
@@ -29,7 +32,8 @@ const AddExpenses = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if(update && update.id){
+    setLoading(true);
+    if (update && update.id) {
       fetch(
         `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${update.id}.json`,
         {
@@ -53,21 +57,27 @@ const AddExpenses = () => {
           }
         })
         .then((data) => {
+          toast.success("Expense updated successfully!");
+          setLoading(false);
           console.log(data);
         })
         .catch((err) => {
-          alert(err.message);
+          toast.error(err.message);
+          setLoading(false);
         });
-    }else{
-   
-    dispatch(expenseActions.addExpenses({
-      moneySpent: moneySpent,
-      description: description,
-      category: category,
-     
-    }))
-  }
-  dispatch(expenseActions.updateExpenses({}));
+    } else {
+      toast.success("Expense added successfully!");
+      setLoading(true);
+      dispatch(
+        expenseActions.addExpenses({
+          moneySpent: moneySpent,
+          description: description,
+          category: category,
+        })
+      );
+      setLoading(false);
+    }
+    dispatch(expenseActions.updateExpenses({}));
     setMoneySpent("");
     setDescription("");
     setCategory("");
@@ -108,7 +118,19 @@ const AddExpenses = () => {
               />
             </div>
             <div className={classes.action}>
-              <button type="submit">Add Expenses</button>
+              <button type="submit">
+                {update.id ? (
+                  loading ? (
+                    <Loader />
+                  ) : (
+                    "Edit Expenses"
+                  )
+                ) : loading ? (
+                  <Loader />
+                ) : (
+                  "Add Expenses"
+                )}
+              </button>
             </div>
           </div>
         </form>

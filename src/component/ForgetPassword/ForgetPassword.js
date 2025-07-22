@@ -1,15 +1,18 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./ForgetPassword.module.css";
+import { toast } from "react-toastify";
+import Loader from "../Loader/loader"
 
 const ForgetPassword = () => {
   const enterEmailInputRef = useRef();
   const history = useHistory();
+  const [loading,setLoading] = useState(false)
 
   const submitHandler = (event) => {
     event.preventDefault();
     const enteredEmail = enterEmailInputRef.current.value;
-
+    setLoading(true)
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDYe7rxDYbi7WgXlIL3QX92DmYYVyXFWho",
       {
@@ -35,14 +38,15 @@ const ForgetPassword = () => {
         }
       })
       .then((data) => {
-        console.log(data.email);
-        alert('Email sent successfully check your email!')
+     
+        toast.success('Email sent successfully check your email!')
         history.push('/login');
-        
+        setLoading(false)
         
       })
       .catch((err) => {
-        alert(err.message);
+        toast.error(err.message);
+        setLoading(false)
       });
   };
 
@@ -56,7 +60,7 @@ const ForgetPassword = () => {
           ref={enterEmailInputRef}
           placeholder="email"
         /><br></br>
-        <button>Send Link</button>
+        <button>{loading ? <Loader/>:"Send Link"}</button>
       </form>
     </>
   );

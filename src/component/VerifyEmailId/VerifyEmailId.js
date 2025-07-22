@@ -1,12 +1,17 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import classes from "./VerifyEmailId.module.css";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import Loader from "../Loader/loader";
 
 const VerifyEmailId = () => {
+  const [loading, setLoading] = useState(false)
   const history = useHistory();
   const token = useSelector((state) => state.auth.token);
 
   const VerifyEmailIdHandler = () => {
+    setLoading(true)
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDYe7rxDYbi7WgXlIL3QX92DmYYVyXFWho",
       {
@@ -35,19 +40,20 @@ const VerifyEmailId = () => {
         }
       })
       .then((data) => {
-        console.log(data.email);
-        alert("verified email successfully!");
+        setLoading(false)
+        toast.success("verified email successfully!");
         history.push("/navigation/home");
       })
       .catch((err) => {
-        alert(err.message);
+        setLoading(false)
+        toast.error(err.message);
       });
   };
 
   return (
     <>
       <div className={classes.action}>
-        <button onClick={VerifyEmailIdHandler}>VerifyEmailId</button>
+        <button onClick={VerifyEmailIdHandler}>{loading? <Loader/>:"VerifyEmailId"}</button>
       </div>
     </>
   );

@@ -2,12 +2,17 @@
 import classes from "./ExpenseOnScreen.module.css";
 import { expenseActions } from "../../store/expenses";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import Loader from "../Loader/loader";
 
 const ExpenseOnScreen = (props) => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const deleteHandler = async (id) => {
     try {
+      setLoading(true);
       const response = await fetch(
         `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${id}.json`,
         {
@@ -19,20 +24,24 @@ const ExpenseOnScreen = (props) => {
       );
 
       const data = await response.json();
-      console.log(data);
-      alert("sucessfully deleted");
+
+      toast.success("sucessfully deleted");
+      setLoading(false);
       //controller = null;
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
+      setLoading(false);
     }
   };
   const editHandler = (id) => {
-    dispatch(expenseActions.updateExpenses({
-      category:props.category,
-      description: props.description,
-      moneySpent: props.moneySpent,
-      id:id
-    }));
+    dispatch(
+      expenseActions.updateExpenses({
+        category: props.category,
+        description: props.description,
+        moneySpent: props.moneySpent,
+        id: id,
+      })
+    );
   };
 
   return (
@@ -47,13 +56,18 @@ const ExpenseOnScreen = (props) => {
             <div>
               <span>{props.moneySpent}</span>
             </div>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                gap: "2",
+              }}
+            >
               <button
                 onClick={() => {
                   deleteHandler(props.id);
                 }}
               >
-                Delete
+                {loading ? <Loader /> : "Delete"}
               </button>
               <button
                 onClick={() => {

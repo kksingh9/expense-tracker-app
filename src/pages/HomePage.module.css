@@ -10,7 +10,7 @@
     color: rgb(128, 99, 99);
 }
 .header span {
-    background-color: #e8dbdb;
+    background-color: var(--header-bg);
     font-family: monospace;
     padding: 0.25rem 0.5rem;
     border-radius: 12px;
