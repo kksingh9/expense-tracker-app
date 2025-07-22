@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./AddExpense.module.css";
 import { expenseActions } from "../../store/expenses";
@@ -10,6 +10,13 @@ const AddExpenses = () => {
   const dispatch = useDispatch();
   const update = useSelector(state => state.expense.update)
  
+  useEffect(() => {
+    if(update && update.id){
+      setMoneySpent(update.moneySpent)
+      setDescription(update.description)
+      setCategory(update.category)
+    }
+  },[update])
   const moneySpentHandler = (e) => {
     setMoneySpent(e.target.value);
   };
@@ -22,9 +29,9 @@ const AddExpenses = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if(update){
+    if(update && update.id){
       fetch(
-        `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${update}.json`,
+        `https://expenses-27efa-default-rtdb.firebaseio.com/expenses/${update.id}.json`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -60,7 +67,7 @@ const AddExpenses = () => {
      
     }))
   }
-  dispatch(expenseActions.updateExpenses(""));
+  dispatch(expenseActions.updateExpenses({}));
     setMoneySpent("");
     setDescription("");
     setCategory("");

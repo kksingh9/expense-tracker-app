@@ -4,7 +4,7 @@ const initialExpenseState = {
   expenses: null,
   getExpense: [],
   totalExpense: 0,
-  update: "",
+  update: {},
 };
 
 const expenseSlice = createSlice({

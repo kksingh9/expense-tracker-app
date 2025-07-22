@@ -27,7 +27,12 @@ const ExpenseOnScreen = (props) => {
     }
   };
   const editHandler = (id) => {
-    dispatch(expenseActions.updateExpenses(id));
+    dispatch(expenseActions.updateExpenses({
+      category:props.category,
+      description: props.description,
+      moneySpent: props.moneySpent,
+      id:id
+    }));
   };
 
   return (
